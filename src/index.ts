@@ -2,46 +2,38 @@
 import { chromium } from 'playwright';
 import fs from 'fs';
 import path from 'path';
-import { distillPage } from './browser/distiller';
-import { generatePlan } from './agents/planner';
+// 引入 DistillResult 接口以便类型提示
+import { distillPage, DistillResult } from './browser/distiller';
+import { generatePlan } from './agents/planner'; // 注意：确保路径是 agent 而不是 agents
 import { Executor } from './browser/executor';
 import { UserProfile } from './types';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-// 读取本地 profile.json
 function loadProfile(): UserProfile {
     const profilePath = path.resolve(__dirname, '../profile.json');
     if (!fs.existsSync(profilePath)) {
         console.error(`❌ Error: profile.json not found at ${profilePath}`);
         process.exit(1);
     }
-    
-    try {
-        const data = fs.readFileSync(profilePath, 'utf-8');
-        return JSON.parse(data) as UserProfile;
-    } catch (e) {
-        console.error("❌ Error parsing profile.json:", e);
-        process.exit(1);
-    }
+    return JSON.parse(fs.readFileSync(profilePath, 'utf-8')) as UserProfile;
 }
 
 async function main() {
     const url = process.argv[2];
     if (!url) {
-        console.error("Please provide a URL. Usage: npm start <url>");
+        console.error("Usage: npm start <url>");
         process.exit(1);
     }
 
-    // 1. Load Profile
-    console.log("📂 Loading Profile...");
     const profile = loadProfile();
-    console.log(`   User: ${profile.basics.firstName} ${profile.basics.lastName}`);
-    console.log(`   Resume: ${profile.resume_path}`);
+    console.log(`👤 User: ${profile.basics.firstName} ${profile.basics.lastName}`);
+    // Debug: 打印这两个路径，确保它们真的被读到了
+    console.log(`📄 Resume Path: ${profile.resume_path}`); 
+    console.log(`📄 Cover Letter Path: ${profile.cover_letter_path || "UNDEFINED (Check JSON keys!)"}`);
 
-    // 2. Launch Browser
-    console.log("🚀 Job Copilot v1.0 Starting...");
+    console.log("\n🚀 Job Copilot v1.0 Starting...");
     const browser = await chromium.launch({ headless: false });
     const page = await browser.newPage();
     
@@ -49,29 +41,72 @@ async function main() {
     await page.goto(url);
     await page.waitForLoadState('networkidle');
 
-    // 3. Distill (Snapshot)
+    // 1. Distill
     console.log("👀 Distilling page...");
-    const { html } = await page.evaluate(distillPage);
+    // 关键修改：获取 html 和 summary
+    const { html, summary } = await page.evaluate(distillPage) as DistillResult;
 
-    // 4. Plan (Agent)
+    // 🔥 打印 DOM 快照表格 (The Eyes)
+    console.log("\n================ DOM SNAPSHOT (The Eyes) ================");
+    console.table(summary.map(s => ({
+        ID: s.id,
+        Type: s.type,
+        Label: s.question.length > 40 ? s.question.substring(0, 40) + '...' : s.question,
+        Value: s.content,
+        Status: s.optionStatus
+    })));
+    console.log("=========================================================\n");
+
+    // 2. Plan
     console.log("🧠 Generating plan (GPT-4o)...");
-    try {
-        const plan = await generatePlan(html, profile);
-        console.log(`📝 Generated ${plan.actions.length} actions.`);
-        
-        // Debug: 打印一下它打算填什么
-        plan.actions.forEach(a => console.log(`   - ${a.label}: ${a.value}`));
+    const plan = await generatePlan(html, profile);
 
-        // 5. Execute (Hands)
-        const executor = new Executor(page);
-        await executor.executePlan(plan);
+    // 3. 打印 Plan 表格 (The Brain)
+    console.log("\n================ AGENT PLAN REPORT (The Brain) ================");
+    console.table(plan.actions.map(a => ({
+        Label: a.label.length > 30 ? a.label.substring(0, 30) + '...' : a.label,
+        Type: a.type,
+        Value: a.value.length > 30 ? a.value.substring(0, 30) + '...' : a.value,
+        Reasoning: a.reasoning.length > 50 ? a.reasoning.substring(0, 50) + '...' : a.reasoning
+    })));
+    console.log("===============================================================\n");
 
-        console.log("\n✅ Done! Browser will remain open for you to review.");
-    } catch (e) {
-        console.error("❌ Error during planning/execution:", e);
+    // 4. Execute
+    const executor = new Executor(page);
+    await executor.executePlan(plan);
+
+    // 5. Summary & Classification (关键更新)
+    // 分类逻辑：
+    // - Human Check: 明确被标记为需要人工检查的
+    // - AI Guessed: 也就是 reasoning 里包含 [GUESS] 标签的
+    // - Perfect Fills: 既不是 human_check 也没有 guess 标签的
+    const humanChecks = plan.actions.filter(a => a.value === 'human_check');
+    const aiGuesses = plan.actions.filter(a => a.reasoning.includes('[GUESS]') && a.value !== 'human_check');
+    const perfectFills = plan.actions.filter(a => a.value !== 'human_check' && !a.reasoning.includes('[GUESS]'));
+
+    console.log("\n🏁 EXECUTION SUMMARY 🏁");
+    console.log(`✅ Perfectly Matched: ${perfectFills.length} fields`);
+    console.log(`🤖 AI Guessed (Review Suggested): ${aiGuesses.length} fields`);
+    console.log(`⚠️ Human Check Needed (Empty): ${humanChecks.length} fields`);
+    
+    // 展示 AI 猜测的项 (Log Warning)
+    if (aiGuesses.length > 0) {
+        console.log("\n🤔 AI Guesses (Please Check):");
+        aiGuesses.forEach(a => {
+            console.log(`   - [${a.label}] -> "${a.value}"`);
+            console.log(`     Reason: ${a.reasoning}`);
+        });
     }
 
-    // await browser.close(); 
+    // 展示必须人工填写的项 (Log Error)
+    if (humanChecks.length > 0) {
+        console.log("\n👇 MUST FILL MANUALLY:");
+        humanChecks.forEach(a => {
+            console.log(`   - [${a.label}]: ${a.reasoning}`);
+        });
+    }
+
+    console.log("\nBrowser remains open for final review.");
 }
 
 main().catch(console.error);

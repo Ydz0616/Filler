@@ -126,6 +126,9 @@
       "leadership_experience": "Led a 7-person team to build a React native Carbon-Footprint Tracking App, enforcing data privacy compliance and implementing a recommendation engine that increased engagement by 50%.",
       "difficult_challenge": "While working on a Human Mobility Prediction system, I faced a bottleneck processing 4TB of raw GPS data. I engineered a distributed ETL pipeline using Dask which reduced processing time from days to under 20 minutes."
     },
-    "resume_path": "/Users/yuandong/Documents/GitHub/Filler/assets/Yuandong_Zhang_resume.pdf"
+    "resume_path": "/Users/yuandong/Documents/GitHub/Filler/assets/Yuandong_Zhang_resume.pdf",
+    "cover_letter_path": "/Users/yuandong/Documents/GitHub/Filler/assets/Yuandong_Zhang_resume.pdf",
+    "cover_letter_text": "Dear Hiring Manager, please hire me, my name is Yuandong and i'm good at coding!" 
+
   }
 

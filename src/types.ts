@@ -37,6 +37,8 @@ export interface UserProfile {
         race: string;
     };
     resume_path: string; // 本地绝对路径
+    cover_letter_path: string;
+    cover_letter_text: string;
 }
 
 // --- 2. Agent 输出定义 (Structured Outputs) ---
