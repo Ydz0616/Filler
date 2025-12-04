@@ -1,0 +1,131 @@
+{
+    "basics": {
+      "firstName": "Yuandong",
+      "lastName": "Zhang",
+      "email": "yuz371@ucsd.edu",
+      "phone": "858-214-6408",
+      "website": "https://yuandong.me",
+      "linkedin": "https://www.linkedin.com/in/yuandongzhang01",
+      "github": "https://github.com/Ydz0616",
+      "location": {
+        "address": "3869 Miramar Street",
+        "city": "San Diego",
+        "state": "California",
+        "zip": "92092",
+        "country": "United States"
+      },
+      "summary": "M.S. in CS student at UCSD with strong background in AI/Data Engineering and Cloud/DevOps (K8s, Docker). Experienced in building machine learning systems,high-availability SaaS architectures and distributed ETL pipelines."
+    },
+    "education": [
+      {
+        "school": "University of California, San Diego",
+        "degree": "Master of Science",
+        "major": "Computer Science",
+        "startDate": "09/2025",
+        "endDate": "06/2027",
+        "gpa": "4.0",
+        "location": "San Diego, CA"
+      },
+      {
+        "school": "Duke University",
+        "degree": "Bachelor of Science",
+        "major": "Computer Science",
+        "startDate": "08/2021",
+        "endDate": "05/2025",
+        "gpa": "3.8",
+        "location": "Durham, NC"
+      },
+      {
+        "school": "Duke Kunshan University",
+        "degree": "Bachelor of Science",
+        "major": "Computer Science",
+        "startDate": "08/2021",
+        "endDate": "05/2025",
+        "gpa": "3.8",
+        "location": "Kunshan,Jiangsu,China"
+      }
+    ],
+    "experience": [
+      {
+        "company": "Weifang Royalroad Trading Co., Ltd.",
+        "title": "Software Engineer Intern",
+        "startDate": "05/2025",
+        "endDate": "09/2025",
+        "location": "Remote",
+        "current": false,
+        "description": "1.Architected a high-availability K8s cluster on AWS EC2 with ArgoCD, automating deployments for 99.9% uptime;2.Developed a full-stack MERN SaaS application, managing end-to-end order flows for 50+ clients with 300+ active SKUs;3.Optimized MongoDB aggregation pipelines and indexes for large-scale transaction data, reducing query latency to <100ms;4.Centralized the CI/CD workflow to support rapid iteration, cutting deployment time by 80% via containerized microservices"
+      },
+      {
+        "company": "Yidian Information Technology Co. Ltd.",
+        "title": "IoT Engineer Intern",
+        "startDate": "05/2024",
+        "endDate": "09/2024",
+        "location": "China",
+        "current": false,
+        "description": "1. Built an end-to-end AIoT checkout system, integrating camera-equipped smart scales with a cloud-based inference backend ; 2.Developed a CNN classifier optimized with Bag-of-Visual-Words (BoVW) to enhance dish recognition accuracy ;3.Engineered real-time pipeline: edge image capture, cloud inference, and API callbacks for pricing in <100ms "
+      },
+      {
+        "company": "Duke Kunshan University",
+        "title": "Research Assistant (Human Mobility Prediction)",
+        "startDate": "07/2024",
+        "endDate": "05/2025",
+        "location": "Kunshan, China",
+        "current": false,
+        "description": "1. Engineered a distributed ETL pipeline using Dask to process 4TB of raw GPS trajectories into features in <20 minutes. 2. Designed a Transformer network achieving 96% SOTA accuracy on trip mode detection using only raw speed inputs. 3. Benchmarked system performance against ViT, LSTM, and CNN baselines, achieving superior accuracy on Geolife datasets. 4. Deployed the inference pipeline to handle cross-regional data, boosting generalization accuracy from 80.5% to 86.1%."
+      },
+      {
+        "company": "Duke Athena AI Institute",
+        "title": "Research Assistant (Federated Learning)",
+        "startDate": "09/2023",
+        "endDate": "05/2024",
+        "location": "Durham, NC",
+        "current": false,
+        "description": "1. Designed a Federated Learning system for black-box LLMs, enabling prompt optimization across heterogeneous architectures. 2. Implemented prompt-projection networks to address data privacy and communication constraints in edge computing settings. 3. Validated cross-model prompt transfer from BERT/GPT-style models to LLaMA on standard NLP benchmarks. 4. Reduced communication overhead significantly compared to gradient-based methods by transmitting only prompt vectors."
+      },
+      {
+        "company": "Duke Kunshan University",
+        "title": "Project Lead (Carbon-Footprint Tracking App)",
+        "startDate": "10/2023",
+        "endDate": "08/2024",
+        "location": "Kunshan, China",
+        "current": false,
+        "description": "1. Engineered a real-time AI pipeline that ingests raw speed data, queries the model, and predicts trip mode instantly. 2. Deployed the Transformers model using FastAPI and Docker, optimizing serving to handle concurrent API requests. 3. Led a 7-person team to build the React native app, enforcing strict data privacy compliance for US and China users. 4. Implemented an item-based recommendation engine to personalize content, driving in-app engagement up 50%."
+      }
+    ],
+    "skills": {
+      "languages": ["Python", "Java", "JavaScript", "TypeScript", "C", "SQL", "Swift"],
+      "infrastructure": ["Kubernetes", "Docker", "ArgoCD", "Amazon EC2", "CI/CD", "Linux", "GitOps"],
+      "data_ai": ["PyTorch", "Dask", "Apache Spark", "MongoDB", "FastAPI", "OpenCV", "LLMs", "Scikit-learn"]
+    },
+    "legal": {
+      "us_work_authorization": "Yes",
+      "visa_sponsorship_needed": "Yes",
+      "visa_sponsorship_future": "Yes",
+      "visa_status": "F-1",
+      "legal_name": "Yuandong Zhang",
+      "are_you_authorized": "Yes",
+      "current_location": "United States"
+    },
+    "demographics": {
+      "gender": "Male",
+      "race": "Asian",
+      "veteran_status": "I am not a protected veteran",
+      "disability_status": "I do not have a disability",
+      "hispanic_latino": "No"
+    },
+    "preferences": {
+      "start_date": "Immediate",
+      "salary_expectation": "120000",
+      "salary_currency": "USD",
+      "relocation": "Yes",
+      "remote_work": "Open to Remote",
+      "notice_period": "None"
+    },
+    "questions": {
+      "why_us": "I am passionate about applying my background in distributed systems and AI to solve real-world problems. Your company's focus on innovation aligns perfectly with my experience in building scalable K8s architectures and deploying SOTA Transformer models.",
+      "leadership_experience": "Led a 7-person team to build a React native Carbon-Footprint Tracking App, enforcing data privacy compliance and implementing a recommendation engine that increased engagement by 50%.",
+      "difficult_challenge": "While working on a Human Mobility Prediction system, I faced a bottleneck processing 4TB of raw GPS data. I engineered a distributed ETL pipeline using Dask which reduced processing time from days to under 20 minutes."
+    },
+    "resume_path": "/Users/yuandong/Documents/GitHub/Filler/assets/Yuandong_Zhang_resume.pdf"
+  }
+

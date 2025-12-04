@@ -1,0 +1,27 @@
+{
+  "name": "filler",
+  "version": "1.0.0",
+  "description": "job-copilot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "openai": "^6.10.0",
+    "playwright": "^1.57.0",
+    "string-similarity": "^4.0.4",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/string-similarity": "^4.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+
+}
