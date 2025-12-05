@@ -35,6 +35,7 @@ export interface UserProfile {
         disability_status: string; // "I do not have a disability"
         gender: string;
         race: string;
+        export_controls:string;
     };
     resume_path: string; // 本地绝对路径
     cover_letter_path: string;

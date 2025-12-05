@@ -104,7 +104,8 @@
       "visa_status": "F-1",
       "legal_name": "Yuandong Zhang",
       "are_you_authorized": "Yes",
-      "current_location": "United States"
+      "current_location": "United States",
+      "export_controls": "None of the above"
     },
     "demographics": {
       "gender": "Male",
