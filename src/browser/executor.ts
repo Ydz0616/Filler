@@ -18,7 +18,7 @@ export class Executor {
             }
             
             const selector = `[data-sme-id="${action.id}"]`;
-            const locator = this.page.locator(selector);
+            const locator = this.page.locator(selector).first();
             
             // 2. 检查元素是否存在
             if (await locator.count() === 0) {
@@ -58,7 +58,10 @@ export class Executor {
                         break;
                     
                     case 'click':
-                        await locator.click();
+                        
+                        await locator.click({ force: true });
+                        console.log("   ⏳ Clicked. Waiting for DOM update...");
+                        await this.page.waitForTimeout(1000);
                         break;
                 }
             } catch (e) {

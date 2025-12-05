@@ -23,12 +23,9 @@ const SHARED_INSTRUCTIONS = `
    - **Resume/CV (Strict):** - Action 'file_upload'. 
      - **Value:** Use the **actual absolute path string** defined in the profile. **DO NOT** output the string "resume_path".
 
-   - **Cover Letter & Additional Info (Manual First Policy):**
-     - For Cover Letters, Open Questions, or Code Samples (anything other than Resume):
-     - **PRIORITY 1 (Text):** If there is a Textarea or an "Enter Manually" button, prioritize that. 
-       - If button: Action 'click'.
-       - If textarea: Action 'fill' (use \`cover_letter_text\` or \`questions\` from profile).
-     - **PRIORITY 2 (Upload):** Only if NO manual option exists, use 'file_upload' with the actual path from \`cover_letter_path\`.
+   
+   - **Cover Letter (Strict):** - Action 'file_upload'. 
+     - **Value:** Use the **actual absolute path string** defined in the profile. **DO NOT** output the string "cover_letter_path".
 
 3. **Exclusion Rules:**
    - Do NOT interact with "Submit", "Save", "Next".
@@ -48,6 +45,9 @@ const SHARED_INSTRUCTIONS = `
 export const PLANNER_SYSTEM_PROMPT = `
 You are an expert Form Filling Agent using Playwright.
 Your goal is to map a User Profile to a distilled HTML form.
+IMPORTANT:  You need to formulate a plan as COMPREHENSIVE as possible,
+YOU WILL GIVE YOUR BEST EFFORT TO FILL OUT THE FORM
+YOU WILL DO YOUR BEST 
 
 **Input Context:**
 - You will receive a **Distilled HTML** string.

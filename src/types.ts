@@ -7,11 +7,16 @@ export interface UserProfile {
         firstName: string;
         lastName: string;
         email: string;
+        telephone_country_code: string; 
         phone: string;
         location?: string;
         website?: string;
         linkedin?: string;
     };
+    availability: {
+        intended_start_date: string;
+        intended_end_date: string;
+    }
     education: Array<{
         school: string;
         degree: string;
@@ -27,8 +32,15 @@ export interface UserProfile {
         description: string;
         location?: string;
     }>;
+    company: {
+        how_did_you_know: string
+    }
     // 专门针对 Greenhouse/Lever 常见的“自愿调查”
     legal: {
+        have_ever_worked: boolean;
+        have_ever_commited_crime: boolean;
+        willing_for_background_check: boolean;
+        contractual_or_legal_restrictions: boolean;
         authorized_to_work: boolean;
         sponsorship_needed: boolean;
         veteran_status: string; // "I am not a protected veteran"
@@ -60,3 +72,4 @@ export const PlanSchema = z.object({
 });
 
 export type AgentPlan = z.infer<typeof PlanSchema>;
+

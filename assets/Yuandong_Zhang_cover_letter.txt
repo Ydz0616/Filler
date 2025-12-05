@@ -1,0 +1,20 @@
+Subject: Application for Software & Systems Engineering Roles
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in engineering opportunities at your company. Currently pursuing my M.S. in Computer Science at UC San Diego with a 4.0 GPA, and holding a B.S. in Computer Science from Duke University, I am deeply passionate about building scalable distributed systems and robust AI infrastructure.
+
+My technical background sits at the intersection of DevOps and Machine Learning, allowing me to bridge the gap between model development and production deployment. During my time as a Software Engineer Intern, I architected a high-availability Kubernetes cluster on AWS EC2 using ArgoCD, achieving 99.9% uptime. This experience gave me hands-on expertise in building reliable, automated CI/CD workflows that support rapid engineering iteration.
+
+Beyond infrastructure, I bring strong capabilities in data engineering. As a Research Assistant, I engineered a distributed ETL pipeline using Dask to process 4TB of raw GPS data, reducing processing time from days to under 20 minutes. I also designed and deployed SOTA Transformer models for mobility prediction, optimizing them for real-world inference.
+
+I am eager to bring this blend of infrastructure reliability (Docker, K8s) and algorithmic efficiency to your engineering team, helping to build tools and systems that scale.
+
+Thank you for your time and consideration.
+
+Sincerely,
+
+Yuandong Zhang
+yuz371@ucsd.edu
++1 858-214-6408
+https://yuandong.me

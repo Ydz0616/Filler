@@ -3,6 +3,7 @@
       "firstName": "Yuandong",
       "lastName": "Zhang",
       "email": "yuz371@ucsd.edu",
+      "telephone_country_code": "United States +1",
       "phone": "858-214-6408",
       "website": "https://yuandong.me",
       "linkedin": "https://www.linkedin.com/in/yuandongzhang01",
@@ -12,9 +13,16 @@
         "city": "San Diego",
         "state": "California",
         "zip": "92092",
-        "country": "United States"
+        "location_of_residnece": "United States"
       },
       "summary": "M.S. in CS student at UCSD with strong background in AI/Data Engineering and Cloud/DevOps (K8s, Docker). Experienced in building machine learning systems,high-availability SaaS architectures and distributed ETL pipelines."
+    },
+    "availability": {
+      "intended_start_date": "05/15/2026",
+      "intended_end_date": "09/19/2026"
+    },
+    "company": {
+      "how_did_you_know": "Linkedin"
     },
     "education": [
       {
@@ -98,6 +106,10 @@
       "data_ai": ["PyTorch", "Dask", "Apache Spark", "MongoDB", "FastAPI", "OpenCV", "LLMs", "Scikit-learn"]
     },
     "legal": {
+      "have_ever_worked_here": "No",
+      "have_ever_commited_crime": "No",
+      "willing_for_background_check": "Yes",
+      "contractual or legal restrictions" : "No",
       "us_work_authorization": "Yes",
       "visa_sponsorship_needed": "Yes",
       "visa_sponsorship_future": "Yes",
@@ -128,7 +140,7 @@
       "difficult_challenge": "While working on a Human Mobility Prediction system, I faced a bottleneck processing 4TB of raw GPS data. I engineered a distributed ETL pipeline using Dask which reduced processing time from days to under 20 minutes."
     },
     "resume_path": "/Users/yuandong/Documents/GitHub/Filler/assets/Yuandong_Zhang_resume.pdf",
-    "cover_letter_path": "/Users/yuandong/Documents/GitHub/Filler/assets/Yuandong_Zhang_resume.pdf",
+    "cover_letter_path":"/Users/yuandong/Documents/GitHub/Filler/assets/Yuandong_Zhang_cover_letter.pdf",
     "cover_letter_text": "Dear Hiring Manager, please hire me, my name is Yuandong and i'm good at coding!" 
 
   }

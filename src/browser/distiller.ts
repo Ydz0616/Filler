@@ -16,6 +16,30 @@ export interface DistillResult {
 // Updated signature to accept simplifyFilled mode
 export function distillPage(simplifyFilled: boolean = false): DistillResult {
     let idCounter = 0;
+    const existingElements = document.querySelectorAll('[data-sme-id]');
+    const existingIds = Array.from(existingElements)
+        .map((el) => {
+            const val = el.getAttribute('data-sme-id');
+            // TS Strict Check: 确保 val 存在且格式正确
+            if (!val || !val.startsWith('sme-')) {
+                return 0;
+            }
+            
+            const parts = val.split('-');
+            // TS Strict Check: 数组访问保护 (noUncheckedIndexedAccess)
+            const numStr = parts[1]; 
+            if (!numStr) { 
+                return 0; 
+            }
+
+            const num = parseInt(numStr, 10);
+            return isNaN(num) ? 0 : num;
+        });
+
+    if (existingIds.length > 0) {
+        idCounter = Math.max(...existingIds) + 1;
+    }
+    
     const ALLOWED_ATTRS = ['type', 'name', 'placeholder', 'aria-label', 'aria-labelledby', 'role', 'value', 'for', 'checked', 'disabled', 'required', 'aria-expanded', 'aria-haspopup'];
 
     // --- Helpers ---
